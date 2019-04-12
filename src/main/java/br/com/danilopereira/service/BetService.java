@@ -12,9 +12,6 @@ public class BetService {
     }
 
     public Player fight(Player player1, Player player2) {
-        System.out.println("Player1: " + player1.getBet().name());
-        System.out.println("Player2: " + player2.getBet().name());
-
         if(player1.getBet().equals(player2.getBet())){
             return null;
         }
