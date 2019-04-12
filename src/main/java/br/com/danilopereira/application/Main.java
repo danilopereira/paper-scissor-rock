@@ -7,6 +7,9 @@ import br.com.danilopereira.utils.GenerateRandomBet;
 
 public class Main {
 
+    private static final String PLAYER_1_IDENTIFIER = "1";
+    private static final String PLAYER_2_IDENTIFIER = "2";
+
     public static void main(String[] args){
 
         int player1Victories = 0;
@@ -30,13 +33,22 @@ public class Main {
             }
         }
 
-        String player1Wins = String.format("Player 1 wins %d of 100 games", player1Victories);
-        String player2Wins = String.format("Player 2 wins %d of 100 games", player2Victories);
-        String tieCount = String.format("Tie: %d of 100 games", ties);
-        System.out.println(player1Wins);
-        System.out.println(player2Wins);
-        System.out.println(tieCount);
+        printMessages(player1Victories, player2Victories, ties);
+    }
 
+    private static void printMessages(int player1Victories, int player2Victories, int ties) {
+        String playerCountVictoriesMessage = "Player %s wins %d of 100 games";
+        String winnerMessage = "Winner is: Player %s (%d to %d wins)";
+
+        System.out.println(String.format(playerCountVictoriesMessage, PLAYER_1_IDENTIFIER, player1Victories));
+        System.out.println(String.format(playerCountVictoriesMessage, PLAYER_2_IDENTIFIER, player2Victories));
+        System.out.println(String.format("Ties: %d of 100 games", ties));
+
+        if(player1Victories > player2Victories){
+            System.out.println(String.format(winnerMessage, PLAYER_1_IDENTIFIER, player1Victories, player2Victories));
+        }else{
+            System.out.println(String.format(winnerMessage, PLAYER_2_IDENTIFIER, player2Victories, player1Victories));
+        }
     }
 
 
