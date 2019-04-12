@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 
 public class BetServiceTest {
@@ -18,23 +19,24 @@ public class BetServiceTest {
     }
 
     @Test
-    public void testTie(){
+    public void testNoWinners(){
         Player player1 = new Player(Bet.PAPER);
         Player player2 = new Player(Bet.PAPER);
 
-        betService.fight(player1, player2);
+        Player winner = betService.fight(player1, player2);
 
-        assertEquals(betService.getTieCount(), 1);
+        assertNull(winner);
     }
+
 
     @Test
     public void testPaperBeatsRock(){
         Player player1 = new Player(Bet.PAPER);
         Player player2 = new Player(Bet.ROCK);
 
-        betService.fight(player1, player2);
+        Player winner = betService.fight(player1, player2);
 
-        assertEquals(player1.getCountWins(), 1);
+        assertEquals(winner, player1);
     }
 
     @Test
@@ -42,9 +44,9 @@ public class BetServiceTest {
         Player player1 = new Player(Bet.ROCK);
         Player player2 = new Player(Bet.SCISSOR);
 
-        betService.fight(player1, player2);
+        Player winner = betService.fight(player1, player2);
 
-        assertEquals(player1.getCountWins(), 1);
+        assertEquals(winner, player1);
     }
 
 
@@ -53,8 +55,8 @@ public class BetServiceTest {
         Player player1 = new Player(Bet.SCISSOR);
         Player player2 = new Player(Bet.PAPER);
 
-        betService.fight(player1, player2);
+        Player winner = betService.fight(player1, player2);
 
-        assertEquals(player1.getCountWins(), 1);
+        assertEquals(winner, player1);
     }
 }
