@@ -9,6 +9,14 @@ public class Player {
         this.countWins = 0;
     }
 
+    public Player() {
+
+    }
+
+    public void setBet(Bet bet) {
+        this.bet = bet;
+    }
+
     public Bet getBet() {
         return bet;
     }

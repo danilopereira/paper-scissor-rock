@@ -6,6 +6,7 @@ import br.com.danilopereira.model.Player;
 public class BetService {
     private int tieCount;
 
+
     public BetService(){
         this.tieCount = 0;
     }
@@ -13,27 +14,23 @@ public class BetService {
     public void fight(Player player1, Player player2) {
         Bet player1Bet = player1.getBet();
         Bet player2Bet = player2.getBet();
+        System.out.println("Player1: " + player1.getBet().name());
+        System.out.println("Player2: " + player2.getBet().name());
         if(player1Bet.equals(player2Bet)){
             this.tieCount++;
-        }
-
-        if(Bet.PAPER.equals(player1Bet)){
+        }else if(Bet.PAPER.equals(player1Bet)){
             if(Bet.ROCK.equals(player2Bet)){
                 player1.addWins();
             }else{
                 player2.addWins();
             }
-        }
-
-        if(Bet.SCISSOR.equals(player1Bet)){
+        }else if(Bet.SCISSOR.equals(player1Bet)){
             if (Bet.PAPER.equals(player2Bet)){
                 player1.addWins();
             }else{
                 player1.addWins();
             }
-        }
-
-        if(Bet.ROCK.equals(player1Bet)){
+        }else if(Bet.ROCK.equals(player1Bet)){
             if(Bet.SCISSOR.equals(player2Bet)){
                 player1.addWins();
             }else{
